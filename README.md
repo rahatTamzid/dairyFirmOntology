@@ -2,7 +2,7 @@
 
 ## Dairy Firm Ontology - Knowledge Representation
 
-The ontology is organized into the following main classes, each with multiple levels of subclasses to capture the detailed aspects of human rights:
+The ontology is organized into the following main classes, each with multiple levels of subclasses to capture the detailed aspects of a Dairy Firm:
 
 
 
