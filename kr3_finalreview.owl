@@ -1,0 +1,1389 @@
+@prefix : <http://www.example.org/ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.example.org/ontology#> .
+
+[ rdf:type owl:Ontology
+ ] .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://www.example.org/ontology#hasHealthRecord
+:hasHealthRecord rdf:type owl:AnnotationProperty .
+
+
+###  http://www.example.org/ontology#hasProteinContent
+:hasProteinContent rdf:type owl:AnnotationProperty .
+
+
+###  http://www.example.org/ontology#hasStorageTemperature
+:hasStorageTemperature rdf:type owl:AnnotationProperty .
+
+
+###  http://www.example.org/ontology#hasSupplementDose
+:hasSupplementDose rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.w3.org/2001/XMLSchema#date
+xsd:date rdf:type rdfs:Datatype .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.example.org/ontology#consumes
+:consumes rdf:type owl:ObjectProperty ;
+          owl:inverseOf :isConsumedBy ;
+          rdfs:domain :DairyAnimalStock ;
+          rdfs:range :DairyAnimalFeeding .
+
+
+###  http://www.example.org/ontology#hasCheckup
+:hasCheckup rdf:type owl:ObjectProperty ;
+            rdfs:domain :DairyAnimalStock ;
+            rdfs:range :DairyAnimalHealthCheckup .
+
+
+###  http://www.example.org/ontology#hasEquipment
+:hasEquipment rdf:type owl:ObjectProperty ;
+              rdfs:domain :DairyFarm ;
+              rdfs:range :FarmEquipment .
+
+
+###  http://www.example.org/ontology#hasHealthManagement
+:hasHealthManagement rdf:type owl:ObjectProperty ;
+                     rdfs:domain :DairyFarm ;
+                     rdfs:range :DairyAnimalHealthCheckup .
+
+
+###  http://www.example.org/ontology#hasLivestock
+:hasLivestock rdf:type owl:ObjectProperty ;
+              rdfs:domain :DairyFarm ;
+              rdfs:range :DairyAnimalStock .
+
+
+###  http://www.example.org/ontology#hasMilkingProcess
+:hasMilkingProcess rdf:type owl:ObjectProperty ;
+                   rdfs:domain :DairyFarm ;
+                   rdfs:range :MilkingProcess .
+
+
+###  http://www.example.org/ontology#hasPart
+:hasPart rdf:type owl:ObjectProperty ;
+         owl:inverseOf :isPartOf ;
+         rdfs:domain :FarmEquipment ;
+         rdfs:range :FarmEquipment .
+
+
+###  http://www.example.org/ontology#hasQualityControl
+:hasQualityControl rdf:type owl:ObjectProperty ;
+                   rdfs:domain :DairyFarm ;
+                   rdfs:range :DairyProductQualityControl .
+
+
+###  http://www.example.org/ontology#hasTest
+:hasTest rdf:type owl:ObjectProperty ;
+         rdfs:domain :DairyProductQualityControl ;
+         rdfs:range :BacterialTesting .
+
+
+###  http://www.example.org/ontology#hasVaccination
+:hasVaccination rdf:type owl:ObjectProperty ;
+                rdfs:domain :DairyAnimalStock ;
+                rdfs:range :DiseasePreventionProgram .
+
+
+###  http://www.example.org/ontology#hasWasteManagement
+:hasWasteManagement rdf:type owl:ObjectProperty ;
+                    rdfs:domain :DairyFarm ;
+                    rdfs:range :WasteHandling .
+
+
+###  http://www.example.org/ontology#isConsumedBy
+:isConsumedBy rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/ontology#isPartOf
+:isPartOf rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/ontology#isProducedBy
+:isProducedBy rdf:type owl:ObjectProperty ;
+              owl:inverseOf :produces ;
+              rdfs:domain :MilkTank ;
+              rdfs:range :MilkingProcess .
+
+
+###  http://www.example.org/ontology#produces
+:produces rdf:type owl:ObjectProperty ;
+          rdfs:domain :MilkingProcess ;
+          rdfs:range :MilkTank .
+
+
+###  http://www.example.org/ontology#usesFeedingSystem
+:usesFeedingSystem rdf:type owl:ObjectProperty ;
+                   rdfs:domain :DairyFarm ;
+                   rdfs:range :DairyAnimalFeeding .
+:hasRecord rdf:type owl:ObjectProperty ;
+           rdfs:domain :DairyFarm ;
+           rdfs:range :FarmRecords .
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.example.org/ontology#hasAge
+:hasAge rdf:type owl:DatatypeProperty ;
+        rdfs:domain :DairyAnimalStock ;
+        rdfs:range xsd:integer .
+
+
+###  http://www.example.org/ontology#hasCheckupDate
+:hasCheckupDate rdf:type owl:DatatypeProperty ;
+                rdfs:domain :DairyAnimalHealthCheckup ;
+                rdfs:range xsd:date .
+
+
+###  http://www.example.org/ontology#hasCost
+:hasCost rdf:type owl:DatatypeProperty ;
+         rdfs:domain :FarmEquipment ;
+         rdfs:range xsd:decimal .
+
+
+###  http://www.example.org/ontology#hasFatContent
+:hasFatContent rdf:type owl:DatatypeProperty ;
+               rdfs:domain :DairyCow ;
+               rdfs:range xsd:decimal .
+
+
+###  http://www.example.org/ontology#hasFeedName
+:hasFeedName rdf:type owl:DatatypeProperty ;
+             rdfs:domain :DairyAnimalFeeding ;
+             rdfs:range xsd:string .
+
+
+###  http://www.example.org/ontology#hasFodderQuantity
+:hasFodderQuantity rdf:type owl:DatatypeProperty ;
+                   rdfs:domain :Fodder ;
+                   rdfs:range xsd:decimal .
+
+
+###  http://www.example.org/ontology#hasLactoseContent
+:hasLactoseContent rdf:type owl:DatatypeProperty ;
+                   rdfs:domain :DairyCow ;
+                   rdfs:range xsd:decimal .
+
+
+###  http://www.example.org/ontology#hasMachineName
+:hasMachineName rdf:type owl:DatatypeProperty ;
+                rdfs:domain :FarmEquipment ;
+                rdfs:range xsd:string .
+
+
+###  http://www.example.org/ontology#hasMilkYield
+:hasMilkYield rdf:type owl:DatatypeProperty ;
+              rdfs:domain :DairyCow ;
+              rdfs:range xsd:decimal .
+
+
+###  http://www.example.org/ontology#hasName
+:hasName rdf:type owl:DatatypeProperty ;
+         rdfs:domain :DairyAnimalStock ;
+         rdfs:range xsd:string .
+
+
+###  http://www.example.org/ontology#hasTestResult
+:hasTestResult rdf:type owl:DatatypeProperty ;
+               rdfs:domain :DairyProductQualityControl ;
+               rdfs:range xsd:string .
+
+
+###  http://www.example.org/ontology#hasVaccinationDate
+:hasVaccinationDate rdf:type owl:DatatypeProperty ;
+                    rdfs:domain :DiseasePreventionProgram ;
+                    rdfs:range xsd:date .
+
+
+###  http://www.example.org/ontology#hasVaccineName
+:hasVaccineName rdf:type owl:DatatypeProperty ;
+                rdfs:domain :DiseasePreventionProgram ;
+                rdfs:range xsd:string .
+
+
+###  http://www.example.org/ontology#hasWasteVolume
+:hasWasteVolume rdf:type owl:DatatypeProperty ;
+                rdfs:domain :WasteHandling ;
+                rdfs:range xsd:decimal .
+
+
+###  http://www.example.org/ontology#hasWeight
+:hasWeight rdf:type owl:DatatypeProperty ;
+           rdfs:domain :DairyAnimalStock ;
+           rdfs:range xsd:decimal .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.example.org/ontology#ActivatedCarbonFiltration
+:ActivatedCarbonFiltration rdf:type owl:Class ;
+                           rdfs:subClassOf :FiltrationAndPurification .
+
+
+###  http://www.example.org/ontology#AdulterationCheckLogs
+:AdulterationCheckLogs rdf:type owl:Class ;
+                       rdfs:subClassOf :QualityAndTestingReports .
+
+
+###  http://www.example.org/ontology#AlfalfaHay
+:AlfalfaHay rdf:type owl:Class ;
+            rdfs:subClassOf :DriedFodder .
+
+
+###  http://www.example.org/ontology#AngusCow
+:AngusCow rdf:type owl:Class ;
+          rdfs:subClassOf :BeefCow .
+
+
+###  http://www.example.org/ontology#AnthraxVaccine
+:AnthraxVaccine rdf:type owl:Class ;
+                rdfs:subClassOf :CompulsoryVaccination .
+
+
+###  http://www.example.org/ontology#AntibioticResidueTesting
+:AntibioticResidueTesting rdf:type owl:Class ;
+                          rdfs:subClassOf :MilkSafetyTesting .
+
+
+###  http://www.example.org/ontology#AutomatedPasteurizers
+:AutomatedPasteurizers rdf:type owl:Class ;
+                       rdfs:subClassOf :FarmEquipment .
+
+
+###  http://www.example.org/ontology#AyrshireCow
+:AyrshireCow rdf:type owl:Class ;
+             rdfs:subClassOf :DairyCow .
+
+
+###  http://www.example.org/ontology#BacterialDecomposition
+:BacterialDecomposition rdf:type owl:Class ;
+                        rdfs:subClassOf :ChemicalWasteHandle .
+
+
+###  http://www.example.org/ontology#BacterialTesting
+:BacterialTesting rdf:type owl:Class ;
+                  rdfs:subClassOf :DairyProductQualityControl .
+
+
+###  http://www.example.org/ontology#BacterialTestingRecords
+:BacterialTestingRecords rdf:type owl:Class ;
+                         rdfs:subClassOf :QualityAndTestingReports .
+
+
+###  http://www.example.org/ontology#BeefCow
+:BeefCow rdf:type owl:Class ;
+         rdfs:subClassOf :Cow .
+
+
+###  http://www.example.org/ontology#BiogasProduction
+:BiogasProduction rdf:type owl:Class ;
+                  rdfs:subClassOf :ManureHandling .
+
+
+###  http://www.example.org/ontology#BoerGoat
+:BoerGoat rdf:type owl:Class ;
+          rdfs:subClassOf :MeatGoat .
+
+
+###  http://www.example.org/ontology#BovineTBVaccine
+:BovineTBVaccine rdf:type owl:Class ;
+                 rdfs:subClassOf :CompulsoryVaccination .
+
+
+###  http://www.example.org/ontology#BreedingHistory
+:BreedingHistory rdf:type owl:Class ;
+                 rdfs:subClassOf :HealthMonitoringRecords .
+
+
+###  http://www.example.org/ontology#BrucellosisVaccine
+:BrucellosisVaccine rdf:type owl:Class ;
+                    rdfs:subClassOf :CompulsoryVaccination .
+
+
+###  http://www.example.org/ontology#Buffalo
+:Buffalo rdf:type owl:Class ;
+         rdfs:subClassOf :DairyAnimalStock .
+
+
+###  http://www.example.org/ontology#BuffaloCalfVaccination
+:BuffaloCalfVaccination rdf:type owl:Class ;
+                        rdfs:subClassOf :NewBornAnimalVaccination .
+
+
+###  http://www.example.org/ontology#BulkMilkStorage
+:BulkMilkStorage rdf:type owl:Class ;
+                 rdfs:subClassOf :MilkTank .
+
+
+###  http://www.example.org/ontology#CalciumSupplements
+:CalciumSupplements rdf:type owl:Class ;
+                    rdfs:subClassOf :MineralSupplements .
+
+
+###  http://www.example.org/ontology#CalfVaccination
+:CalfVaccination rdf:type owl:Class ;
+                 rdfs:subClassOf :NewBornAnimalVaccination .
+
+
+###  http://www.example.org/ontology#CharolaisCow
+:CharolaisCow rdf:type owl:Class ;
+              rdfs:subClassOf :BeefCow .
+
+
+###  http://www.example.org/ontology#ChemicalAnalysisLogs
+:ChemicalAnalysisLogs rdf:type owl:Class ;
+                      rdfs:subClassOf :QualityAndTestingReports .
+
+
+###  http://www.example.org/ontology#ChemicalNeutralization
+:ChemicalNeutralization rdf:type owl:Class ;
+                        rdfs:subClassOf :ChemicalWasteHandle .
+
+
+###  http://www.example.org/ontology#ChemicalTesting
+:ChemicalTesting rdf:type owl:Class ;
+                 rdfs:subClassOf :DairyProductQualityControl .
+
+
+###  http://www.example.org/ontology#ChemicalWasteHandle
+:ChemicalWasteHandle rdf:type owl:Class ;
+                     rdfs:subClassOf :LiquidWasteHandling .
+
+
+###  http://www.example.org/ontology#ChineseRiverBuffalo
+:ChineseRiverBuffalo rdf:type owl:Class ;
+                     rdfs:subClassOf :RiverBuffalo .
+
+
+###  http://www.example.org/ontology#ClosedTankSystem
+:ClosedTankSystem rdf:type owl:Class ;
+                  rdfs:subClassOf :BulkMilkStorage .
+
+
+###  http://www.example.org/ontology#ColdStorage
+:ColdStorage rdf:type owl:Class ;
+             rdfs:subClassOf :FarmEquipment .
+
+
+###  http://www.example.org/ontology#CompostingManure
+:CompostingManure rdf:type owl:Class ;
+                  rdfs:subClassOf :WasteTreatment .
+
+
+###  http://www.example.org/ontology#CompulsoryVaccination
+:CompulsoryVaccination rdf:type owl:Class ;
+                       rdfs:subClassOf :DiseasePreventionProgram .
+
+
+###  http://www.example.org/ontology#ContaminantTesting
+:ContaminantTesting rdf:type owl:Class ;
+                    rdfs:subClassOf :ChemicalTesting .
+
+
+###  http://www.example.org/ontology#ContinuousFlowMethod
+:ContinuousFlowMethod rdf:type owl:Class ;
+                      rdfs:subClassOf :HighTemperaturePasteurization .
+
+
+###  http://www.example.org/ontology#ControlledBurning
+:ControlledBurning rdf:type owl:Class ;
+                   rdfs:subClassOf :DisposalAndIncineration .
+
+
+###  http://www.example.org/ontology#ControlledHandMilking
+:ControlledHandMilking rdf:type owl:Class ;
+                       rdfs:subClassOf :HandMilking .
+
+
+###  http://www.example.org/ontology#Cow
+:Cow rdf:type owl:Class ;
+     rdfs:subClassOf :DairyAnimalStock .
+
+
+###  http://www.example.org/ontology#DailyAndMonthlyLogs
+:DailyAndMonthlyLogs rdf:type owl:Class ;
+                     rdfs:subClassOf :MilkProductionRecords .
+
+
+###  http://www.example.org/ontology#DailyProductionLogs
+:DailyProductionLogs rdf:type owl:Class ;
+                     rdfs:subClassOf :DailyAndMonthlyLogs .
+
+
+###  http://www.example.org/ontology#DairyAnimalFeeding
+:DairyAnimalFeeding rdf:type owl:Class .
+
+
+###  http://www.example.org/ontology#DairyAnimalHealthCheckup
+:DairyAnimalHealthCheckup rdf:type owl:Class .
+
+
+###  http://www.example.org/ontology#DairyAnimalSpecialCare
+:DairyAnimalSpecialCare rdf:type owl:Class ;
+                        rdfs:subClassOf :DairyAnimalHealthCheckup .
+
+
+###  http://www.example.org/ontology#DairyAnimalStock
+:DairyAnimalStock rdf:type owl:Class .
+
+
+###  http://www.example.org/ontology#DairyBuffalo
+:DairyBuffalo rdf:type owl:Class ;
+              rdfs:subClassOf :Buffalo .
+
+
+###  http://www.example.org/ontology#DairyCow
+:DairyCow rdf:type owl:Class ;
+          rdfs:subClassOf :Cow .
+
+
+###  http://www.example.org/ontology#DairyFarm
+:DairyFarm rdf:type owl:Class .
+
+
+###  http://www.example.org/ontology#DairyGoat
+:DairyGoat rdf:type owl:Class ;
+           rdfs:subClassOf :Goat .
+
+
+###  http://www.example.org/ontology#DairyProductQualityControl
+:DairyProductQualityControl rdf:type owl:Class .
+
+
+###  http://www.example.org/ontology#DeepFreezeUnits
+:DeepFreezeUnits rdf:type owl:Class ;
+                 rdfs:subClassOf :ColdStorage .
+
+
+###  http://www.example.org/ontology#DiseaseDiagnosis
+:DiseaseDiagnosis rdf:type owl:Class ;
+                  rdfs:subClassOf :DairyAnimalSpecialCare .
+
+
+###  http://www.example.org/ontology#DiseaseOutbreakVaccination
+:DiseaseOutbreakVaccination rdf:type owl:Class ;
+                            rdfs:subClassOf :SeasonalVaccination .
+
+
+###  http://www.example.org/ontology#DiseasePreventionProgram
+:DiseasePreventionProgram rdf:type owl:Class .
+
+
+###  http://www.example.org/ontology#DiseaseTrackingLogs
+:DiseaseTrackingLogs rdf:type owl:Class ;
+                     rdfs:subClassOf :HealthMonitoringRecords .
+
+
+###  http://www.example.org/ontology#DisposalAndIncineration
+:DisposalAndIncineration rdf:type owl:Class ;
+                         rdfs:subClassOf :SolidWasteHandling .
+
+
+###  http://www.example.org/ontology#DriedFodder
+:DriedFodder rdf:type owl:Class ;
+             rdfs:subClassOf :Fodder .
+
+
+###  http://www.example.org/ontology#DryStorage
+:DryStorage rdf:type owl:Class ;
+            rdfs:subClassOf :FarmEquipment .
+
+
+###  http://www.example.org/ontology#EmergencyCheckup
+:EmergencyCheckup rdf:type owl:Class ;
+                  rdfs:subClassOf :RoutineHealthCheckup .
+
+
+###  http://www.example.org/ontology#EmergencyHandMilking
+:EmergencyHandMilking rdf:type owl:Class ;
+                      rdfs:subClassOf :HandMilking .
+
+
+###  http://www.example.org/ontology#EmergencyMedicalNotes
+:EmergencyMedicalNotes rdf:type owl:Class ;
+                       rdfs:subClassOf :VeterinaryRecords .
+
+
+###  http://www.example.org/ontology#EnergyConversion
+:EnergyConversion rdf:type owl:Class ;
+                  rdfs:subClassOf :BiogasProduction .
+
+
+###  http://www.example.org/ontology#EquipmentStorage
+:EquipmentStorage rdf:type owl:Class ;
+                  rdfs:subClassOf :DryStorage .
+
+
+###  http://www.example.org/ontology#FMDVaccine
+:FMDVaccine rdf:type owl:Class ;
+            rdfs:subClassOf :CompulsoryVaccination .
+
+
+###  http://www.example.org/ontology#FarmEquipment
+:FarmEquipment rdf:type owl:Class .
+
+
+###  http://www.example.org/ontology#FarmRecords
+:FarmRecords rdf:type owl:Class .
+
+
+###  http://www.example.org/ontology#FatAndProteinContentReports
+:FatAndProteinContentReports rdf:type owl:Class ;
+                             rdfs:subClassOf :QualityAndTestingReports .
+
+
+###  http://www.example.org/ontology#FatContentTesting
+:FatContentTesting rdf:type owl:Class ;
+                   rdfs:subClassOf :NutrientCompositionTesting .
+
+
+###  http://www.example.org/ontology#FeedStorage
+:FeedStorage rdf:type owl:Class ;
+             rdfs:subClassOf :DryStorage .
+
+
+###  http://www.example.org/ontology#FertilizerProcessing
+:FertilizerProcessing rdf:type owl:Class ;
+                      rdfs:subClassOf :WasteTreatment .
+
+
+###  http://www.example.org/ontology#FiltrationAndPurification
+:FiltrationAndPurification rdf:type owl:Class ;
+                           rdfs:subClassOf :LiquidWasteHandling .
+
+
+###  http://www.example.org/ontology#FirstTrimester
+:FirstTrimester rdf:type owl:Class ;
+                rdfs:subClassOf :PregnantCow .
+
+
+###  http://www.example.org/ontology#Fodder
+:Fodder rdf:type owl:Class ;
+        rdfs:subClassOf :DairyAnimalFeeding .
+
+
+###  http://www.example.org/ontology#FreezingPointDetermination
+:FreezingPointDetermination rdf:type owl:Class ;
+                            rdfs:subClassOf :StabilityAndStorageTesting .
+
+
+###  http://www.example.org/ontology#FreshFodder
+:FreshFodder rdf:type owl:Class ;
+             rdfs:subClassOf :Fodder .
+
+
+###  http://www.example.org/ontology#Goat
+:Goat rdf:type owl:Class ;
+      rdfs:subClassOf :DairyAnimalStock .
+
+
+###  http://www.example.org/ontology#GrainStorage
+:GrainStorage rdf:type owl:Class ;
+              rdfs:subClassOf :DryStorage .
+
+
+###  http://www.example.org/ontology#GrassFodder
+:GrassFodder rdf:type owl:Class ;
+             rdfs:subClassOf :FreshFodder .
+
+
+###  http://www.example.org/ontology#GrassHay
+:GrassHay rdf:type owl:Class ;
+          rdfs:subClassOf :DriedFodder .
+
+
+###  http://www.example.org/ontology#GreenLegumeFodder
+:GreenLegumeFodder rdf:type owl:Class ;
+                   rdfs:subClassOf :FreshFodder .
+
+
+###  http://www.example.org/ontology#GrowthRecords
+:GrowthRecords rdf:type owl:Class ;
+               rdfs:subClassOf :HealthMonitoringRecords .
+
+
+###  http://www.example.org/ontology#HandMilking
+:HandMilking rdf:type owl:Class ;
+             rdfs:subClassOf :MilkingProcess .
+
+
+###  http://www.example.org/ontology#HazardousWasteDisposal
+:HazardousWasteDisposal rdf:type owl:Class ;
+                        rdfs:subClassOf :DisposalAndIncineration .
+
+
+###  http://www.example.org/ontology#HealthMonitoringRecords
+:HealthMonitoringRecords rdf:type owl:Class ;
+                         rdfs:subClassOf :FarmRecords .
+
+
+###  http://www.example.org/ontology#HeatStabilityTesting
+:HeatStabilityTesting rdf:type owl:Class ;
+                      rdfs:subClassOf :StabilityAndStorageTesting .
+
+
+###  http://www.example.org/ontology#HeavyMetalTesting
+:HeavyMetalTesting rdf:type owl:Class ;
+                   rdfs:subClassOf :ContaminantTesting .
+
+
+###  http://www.example.org/ontology#HerefordCow
+:HerefordCow rdf:type owl:Class ;
+             rdfs:subClassOf :BeefCow .
+
+
+###  http://www.example.org/ontology#HighTemperaturePasteurization
+:HighTemperaturePasteurization rdf:type owl:Class ;
+                               rdfs:subClassOf :Pasteurization .
+
+
+###  http://www.example.org/ontology#HoldingTimeExtension
+:HoldingTimeExtension rdf:type owl:Class ;
+                      rdfs:subClassOf :LowTemperaturePasteurization .
+
+
+###  http://www.example.org/ontology#HolsteinCow
+:HolsteinCow rdf:type owl:Class ;
+             rdfs:subClassOf :DairyCow .
+
+
+###  http://www.example.org/ontology#HydroponicFodder
+:HydroponicFodder rdf:type owl:Class ;
+                  rdfs:subClassOf :FreshFodder .
+
+
+###  http://www.example.org/ontology#IceBankStorage
+:IceBankStorage rdf:type owl:Class ;
+                rdfs:subClassOf :ColdStorage .
+
+
+###  http://www.example.org/ontology#IndianRiverBuffalo
+:IndianRiverBuffalo rdf:type owl:Class ;
+                    rdfs:subClassOf :RiverBuffalo .
+
+
+###  http://www.example.org/ontology#InjuryTreatment
+:InjuryTreatment rdf:type owl:Class ;
+                 rdfs:subClassOf :DairyAnimalSpecialCare .
+
+
+###  http://www.example.org/ontology#InsulatedTank
+:InsulatedTank rdf:type owl:Class ;
+               rdfs:subClassOf :BulkMilkStorage .
+
+
+###  http://www.example.org/ontology#JaffarabadiBuffalo
+:JaffarabadiBuffalo rdf:type owl:Class ;
+                    rdfs:subClassOf :DairyBuffalo .
+
+
+###  http://www.example.org/ontology#JerseyCow
+:JerseyCow rdf:type owl:Class ;
+           rdfs:subClassOf :DairyCow .
+
+
+###  http://www.example.org/ontology#KidGoatVaccination
+:KidGoatVaccination rdf:type owl:Class ;
+                    rdfs:subClassOf :NewBornAnimalVaccination .
+
+
+###  http://www.example.org/ontology#KikoGoat
+:KikoGoat rdf:type owl:Class ;
+          rdfs:subClassOf :MeatGoat .
+
+
+###  http://www.example.org/ontology#LactoseLevelMeasurement
+:LactoseLevelMeasurement rdf:type owl:Class ;
+                         rdfs:subClassOf :NutrientCompositionTesting .
+
+
+###  http://www.example.org/ontology#LambVaccination
+:LambVaccination rdf:type owl:Class ;
+                 rdfs:subClassOf :NewBornAnimalVaccination .
+
+
+###  http://www.example.org/ontology#LargeScaleBiogas
+:LargeScaleBiogas rdf:type owl:Class ;
+                  rdfs:subClassOf :BiogasProduction .
+
+
+###  http://www.example.org/ontology#LightExposureEffects
+:LightExposureEffects rdf:type owl:Class ;
+                      rdfs:subClassOf :StabilityAndStorageTesting .
+
+
+###  http://www.example.org/ontology#LiquidManureStorage
+:LiquidManureStorage rdf:type owl:Class ;
+                     rdfs:subClassOf :WasteTreatment .
+
+
+###  http://www.example.org/ontology#LiquidWasteHandling
+:LiquidWasteHandling rdf:type owl:Class ;
+                     rdfs:subClassOf :WasteHandling .
+
+
+###  http://www.example.org/ontology#LowTempShortTime
+:LowTempShortTime rdf:type owl:Class ;
+                  rdfs:subClassOf :LowTemperaturePasteurization .
+
+
+###  http://www.example.org/ontology#LowTemperaturePasteurization
+:LowTemperaturePasteurization rdf:type owl:Class ;
+                              rdfs:subClassOf :Pasteurization .
+
+
+###  http://www.example.org/ontology#MagnesiumSupplements
+:MagnesiumSupplements rdf:type owl:Class ;
+                      rdfs:subClassOf :MineralSupplements .
+
+
+###  http://www.example.org/ontology#ManureHandling
+:ManureHandling rdf:type owl:Class ;
+                rdfs:subClassOf :WasteHandling .
+
+
+###  http://www.example.org/ontology#MeatGoat
+:MeatGoat rdf:type owl:Class ;
+          rdfs:subClassOf :Goat .
+
+
+###  http://www.example.org/ontology#MedicationHistoryLogs
+:MedicationHistoryLogs rdf:type owl:Class ;
+                       rdfs:subClassOf :VeterinaryRecords .
+
+
+###  http://www.example.org/ontology#MetalScrapReprocessing
+:MetalScrapReprocessing rdf:type owl:Class ;
+                        rdfs:subClassOf :RecyclingAndReusability .
+
+
+###  http://www.example.org/ontology#MethaneExtraction
+:MethaneExtraction rdf:type owl:Class ;
+                   rdfs:subClassOf :BiogasProduction .
+
+
+###  http://www.example.org/ontology#MilkProductionRecords
+:MilkProductionRecords rdf:type owl:Class ;
+                       rdfs:subClassOf :FarmRecords .
+
+
+###  http://www.example.org/ontology#MilkSafetyTesting
+:MilkSafetyTesting rdf:type owl:Class ;
+                   rdfs:subClassOf :BacterialTesting .
+
+
+###  http://www.example.org/ontology#MilkTank
+:MilkTank rdf:type owl:Class ;
+          rdfs:subClassOf :FarmEquipment .
+
+
+###  http://www.example.org/ontology#MilkingProcess
+:MilkingProcess rdf:type owl:Class .
+
+
+###  http://www.example.org/ontology#MineralSupplements
+:MineralSupplements rdf:type owl:Class ;
+                    rdfs:subClassOf :SupplementaryFeeding .
+
+
+###  http://www.example.org/ontology#MobileCoolingTanks
+:MobileCoolingTanks rdf:type owl:Class ;
+                    rdfs:subClassOf :MobileMilkStorage .
+
+
+###  http://www.example.org/ontology#MobileMilkStorage
+:MobileMilkStorage rdf:type owl:Class ;
+                   rdfs:subClassOf :MilkTank .
+
+
+###  http://www.example.org/ontology#MonthlyCheckup
+:MonthlyCheckup rdf:type owl:Class ;
+                rdfs:subClassOf :RoutineHealthCheckup .
+
+
+###  http://www.example.org/ontology#MonthlyProductionSummaries
+:MonthlyProductionSummaries rdf:type owl:Class ;
+                            rdfs:subClassOf :DailyAndMonthlyLogs .
+
+
+###  http://www.example.org/ontology#MurrahBuffalo
+:MurrahBuffalo rdf:type owl:Class ;
+               rdfs:subClassOf :DairyBuffalo .
+
+
+###  http://www.example.org/ontology#NewBornAnimalVaccination
+:NewBornAnimalVaccination rdf:type owl:Class ;
+                          rdfs:subClassOf :DiseasePreventionProgram .
+
+
+###  http://www.example.org/ontology#NubianGoat
+:NubianGoat rdf:type owl:Class ;
+            rdfs:subClassOf :DairyGoat .
+
+
+###  http://www.example.org/ontology#NutrientCompositionTesting
+:NutrientCompositionTesting rdf:type owl:Class ;
+                            rdfs:subClassOf :ChemicalTesting .
+
+
+###  http://www.example.org/ontology#OpenHandMilking
+:OpenHandMilking rdf:type owl:Class ;
+                 rdfs:subClassOf :HandMilking .
+
+
+###  http://www.example.org/ontology#OrganicWasteRecycling
+:OrganicWasteRecycling rdf:type owl:Class ;
+                       rdfs:subClassOf :RecyclingAndReusability .
+
+
+###  http://www.example.org/ontology#Pasteurization
+:Pasteurization rdf:type owl:Class ;
+                rdfs:subClassOf :MilkingProcess .
+
+
+###  http://www.example.org/ontology#PathogenScreening
+:PathogenScreening rdf:type owl:Class ;
+                   rdfs:subClassOf :MilkSafetyTesting .
+
+
+###  http://www.example.org/ontology#PerAnimalMilkYield
+:PerAnimalMilkYield rdf:type owl:Class ;
+                    rdfs:subClassOf :DailyAndMonthlyLogs .
+
+
+###  http://www.example.org/ontology#PesticideResidueTesting
+:PesticideResidueTesting rdf:type owl:Class ;
+                         rdfs:subClassOf :ContaminantTesting .
+
+
+###  http://www.example.org/ontology#PhosphorusSupplements
+:PhosphorusSupplements rdf:type owl:Class ;
+                       rdfs:subClassOf :MineralSupplements .
+
+
+###  http://www.example.org/ontology#PostPregnancyCheckup
+:PostPregnancyCheckup rdf:type owl:Class ;
+                      rdfs:subClassOf :DairyAnimalSpecialCare .
+
+
+###  http://www.example.org/ontology#PregnantCow
+:PregnantCow rdf:type owl:Class ;
+             rdfs:subClassOf :Cow .
+
+
+###  http://www.example.org/ontology#PreventiveCheckup
+:PreventiveCheckup rdf:type owl:Class ;
+                   rdfs:subClassOf :RoutineHealthCheckup .
+
+
+###  http://www.example.org/ontology#ProcessingPlantSupplyRecords
+:ProcessingPlantSupplyRecords rdf:type owl:Class ;
+                              rdfs:subClassOf :DailyAndMonthlyLogs .
+
+
+###  http://www.example.org/ontology#ProteinContentAnalysis
+:ProteinContentAnalysis rdf:type owl:Class ;
+                        rdfs:subClassOf :NutrientCompositionTesting .
+
+
+###  http://www.example.org/ontology#QualityAndTestingReports
+:QualityAndTestingReports rdf:type owl:Class ;
+                          rdfs:subClassOf :MilkProductionRecords .
+
+
+###  http://www.example.org/ontology#RainySeasonVaccination
+:RainySeasonVaccination rdf:type owl:Class ;
+                        rdfs:subClassOf :SeasonalVaccination .
+
+
+###  http://www.example.org/ontology#RecyclingAndReusability
+:RecyclingAndReusability rdf:type owl:Class ;
+                         rdfs:subClassOf :SolidWasteHandling .
+
+
+###  http://www.example.org/ontology#RefrigeratedChambers
+:RefrigeratedChambers rdf:type owl:Class ;
+                      rdfs:subClassOf :ColdStorage .
+
+
+###  http://www.example.org/ontology#ReverseOsmosisPurification
+:ReverseOsmosisPurification rdf:type owl:Class ;
+                            rdfs:subClassOf :FiltrationAndPurification .
+
+
+###  http://www.example.org/ontology#RiverBuffalo
+:RiverBuffalo rdf:type owl:Class ;
+              rdfs:subClassOf :Buffalo .
+
+
+###  http://www.example.org/ontology#RoutineHealthCheckup
+:RoutineHealthCheckup rdf:type owl:Class ;
+                      rdfs:subClassOf :DairyAnimalHealthCheckup .
+
+
+###  http://www.example.org/ontology#SaanenGoat
+:SaanenGoat rdf:type owl:Class ;
+            rdfs:subClassOf :DairyGoat .
+
+
+###  http://www.example.org/ontology#SaltSupplements
+:SaltSupplements rdf:type owl:Class ;
+                 rdfs:subClassOf :MineralSupplements .
+
+
+###  http://www.example.org/ontology#SeasonalCheckup
+:SeasonalCheckup rdf:type owl:Class ;
+                 rdfs:subClassOf :RoutineHealthCheckup .
+
+
+###  http://www.example.org/ontology#SeasonalFodder
+:SeasonalFodder rdf:type owl:Class ;
+                rdfs:subClassOf :FreshFodder .
+
+
+###  http://www.example.org/ontology#SeasonalVaccination
+:SeasonalVaccination rdf:type owl:Class ;
+                     rdfs:subClassOf :DiseasePreventionProgram .
+
+
+###  http://www.example.org/ontology#SecondTrimester
+:SecondTrimester rdf:type owl:Class ;
+                 rdfs:subClassOf :PregnantCow .
+
+
+###  http://www.example.org/ontology#SedimentationProcess
+:SedimentationProcess rdf:type owl:Class ;
+                      rdfs:subClassOf :FiltrationAndPurification .
+
+
+###  http://www.example.org/ontology#ShelfLifeEstimation
+:ShelfLifeEstimation rdf:type owl:Class ;
+                     rdfs:subClassOf :StabilityAndStorageTesting .
+
+
+###  http://www.example.org/ontology#SlowBatchMethod
+:SlowBatchMethod rdf:type owl:Class ;
+                 rdfs:subClassOf :LowTemperaturePasteurization .
+
+
+###  http://www.example.org/ontology#SmallScaleBiogas
+:SmallScaleBiogas rdf:type owl:Class ;
+                  rdfs:subClassOf :BiogasProduction .
+
+
+###  http://www.example.org/ontology#SmellAnalysis
+:SmellAnalysis rdf:type owl:Class ;
+               rdfs:subClassOf :DairyProductQualityControl .
+
+
+###  http://www.example.org/ontology#SolidManureStorage
+:SolidManureStorage rdf:type owl:Class ;
+                    rdfs:subClassOf :WasteTreatment .
+
+
+###  http://www.example.org/ontology#SolidWasteHandling
+:SolidWasteHandling rdf:type owl:Class ;
+                    rdfs:subClassOf :WasteHandling .
+
+
+###  http://www.example.org/ontology#SpanishGoat
+:SpanishGoat rdf:type owl:Class ;
+             rdfs:subClassOf :MeatGoat .
+
+
+###  http://www.example.org/ontology#StabilityAndStorageTesting
+:StabilityAndStorageTesting rdf:type owl:Class ;
+                            rdfs:subClassOf :DairyProductQualityControl .
+
+
+###  http://www.example.org/ontology#StrawHay
+:StrawHay rdf:type owl:Class ;
+          rdfs:subClassOf :DriedFodder .
+
+
+###  http://www.example.org/ontology#SummerVaccination
+:SummerVaccination rdf:type owl:Class ;
+                   rdfs:subClassOf :SeasonalVaccination .
+
+
+###  http://www.example.org/ontology#SupplementaryFeeding
+:SupplementaryFeeding rdf:type owl:Class ;
+                      rdfs:subClassOf :DairyAnimalFeeding .
+
+
+###  http://www.example.org/ontology#SurtiBuffalo
+:SurtiBuffalo rdf:type owl:Class ;
+              rdfs:subClassOf :DairyBuffalo .
+
+
+###  http://www.example.org/ontology#TasteTesting
+:TasteTesting rdf:type owl:Class ;
+              rdfs:subClassOf :DairyProductQualityControl .
+
+
+###  http://www.example.org/ontology#ThaiRiverBuffalo
+:ThaiRiverBuffalo rdf:type owl:Class ;
+                  rdfs:subClassOf :RiverBuffalo .
+
+
+###  http://www.example.org/ontology#ThirdTrimester
+:ThirdTrimester rdf:type owl:Class ;
+                rdfs:subClassOf :PregnantCow .
+
+
+###  http://www.example.org/ontology#ToggenburgGoat
+:ToggenburgGoat rdf:type owl:Class ;
+                rdfs:subClassOf :DairyGoat .
+
+
+###  http://www.example.org/ontology#TransportableMilkContainers
+:TransportableMilkContainers rdf:type owl:Class ;
+                             rdfs:subClassOf :MobileMilkStorage .
+
+
+###  http://www.example.org/ontology#TreatmentEffectivenessReports
+:TreatmentEffectivenessReports rdf:type owl:Class ;
+                               rdfs:subClassOf :VeterinaryRecords .
+
+
+###  http://www.example.org/ontology#UVSterilization
+:UVSterilization rdf:type owl:Class ;
+                 rdfs:subClassOf :FiltrationAndPurification .
+
+
+###  http://www.example.org/ontology#UltraHeatTreatment
+:UltraHeatTreatment rdf:type owl:Class ;
+                    rdfs:subClassOf :HighTemperaturePasteurization .
+
+
+###  http://www.example.org/ontology#VeterinaryDiagnosisRecords
+:VeterinaryDiagnosisRecords rdf:type owl:Class ;
+                            rdfs:subClassOf :VeterinaryRecords .
+
+
+###  http://www.example.org/ontology#VeterinaryRecords
+:VeterinaryRecords rdf:type owl:Class ;
+                   rdfs:subClassOf :FarmRecords .
+
+
+###  http://www.example.org/ontology#VitaminA
+:VitaminA rdf:type owl:Class ;
+          rdfs:subClassOf :VitaminSupplements .
+
+
+###  http://www.example.org/ontology#VitaminAndMineralAssessment
+:VitaminAndMineralAssessment rdf:type owl:Class ;
+                             rdfs:subClassOf :NutrientCompositionTesting .
+
+
+###  http://www.example.org/ontology#VitaminB
+:VitaminB rdf:type owl:Class ;
+          rdfs:subClassOf :VitaminSupplements .
+
+
+###  http://www.example.org/ontology#VitaminC
+:VitaminC rdf:type owl:Class ;
+          rdfs:subClassOf :VitaminSupplements .
+
+
+###  http://www.example.org/ontology#VitaminD
+:VitaminD rdf:type owl:Class ;
+          rdfs:subClassOf :VitaminSupplements .
+
+
+###  http://www.example.org/ontology#VitaminSupplements
+:VitaminSupplements rdf:type owl:Class ;
+                    rdfs:subClassOf :SupplementaryFeeding .
+
+
+###  http://www.example.org/ontology#WasteHandling
+:WasteHandling rdf:type owl:Class .
+
+
+###  http://www.example.org/ontology#WasteTreatment
+:WasteTreatment rdf:type owl:Class ;
+                rdfs:subClassOf :ManureHandling .
+
+
+###  http://www.example.org/ontology#WaterQualityTesting
+:WaterQualityTesting rdf:type owl:Class ;
+                     rdfs:subClassOf :BacterialTesting .
+
+
+###  http://www.example.org/ontology#WinterVaccination
+:WinterVaccination rdf:type owl:Class ;
+                   rdfs:subClassOf :SeasonalVaccination .
+
+
+###  http://www.example.org/ontology#pHTreatment
+:pHTreatment rdf:type owl:Class ;
+             rdfs:subClassOf :ChemicalWasteHandle .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.example.org/ontology#Bella
+:Bella rdf:type owl:NamedIndividual ,
+                :HolsteinCow ;
+       :hasCheckup :Checkup2 ;
+       :hasVaccination :Vaccine2 ;
+       :isConsumedBy :Feed2 ;
+       :hasAge 4 ;
+       :hasFatContent 4.0 ;
+       :hasLactoseContent 4.9 ;
+       :hasMilkYield 30.0 ;
+       :hasName "Bella" ;
+       :hasWeight 700.0 ;
+       :hasHealthRecord :Record2 ;
+       :hasProteinContent 3.5 .
+
+
+###  http://www.example.org/ontology#CalciumSupplement1
+:CalciumSupplement1 rdf:type owl:NamedIndividual ,
+                             :CalciumSupplements ;
+                    :hasSupplementDose 50.0 .
+
+
+###  http://www.example.org/ontology#Charlie
+:Charlie rdf:type owl:NamedIndividual ,
+                  :SaanenGoat ;
+         :hasCheckup :Checkup1 ;
+         :hasVaccination :Vaccine2 ;
+         :isConsumedBy :Feed1 ;
+         :hasAge 3 ;
+         :hasFatContent 4.5 ;
+         :hasLactoseContent 4.3 ;
+         :hasMilkYield 5.0 ;
+         :hasName "Charlie" ;
+         :hasWeight 50.0 ;
+         :hasProteinContent 3.0 .
+
+
+###  http://www.example.org/ontology#Checkup1
+:Checkup1 rdf:type owl:NamedIndividual ,
+                   :RoutineHealthCheckup ;
+          :hasCheckupDate "2023-10-05"^^xsd:date .
+
+
+###  http://www.example.org/ontology#Checkup2
+:Checkup2 rdf:type owl:NamedIndividual ,
+                   :EmergencyCheckup ;
+          :hasCheckupDate "2023-09-10"^^xsd:date .
+
+
+###  http://www.example.org/ontology#Daisy
+:Daisy rdf:type owl:NamedIndividual ,
+                :JerseyCow ;
+       :hasCheckup :Checkup1 ;
+       :hasVaccination :Vaccine1 ;
+       :isConsumedBy :Feed1 ;
+       :hasAge 5 ;
+       :hasFatContent 3.8 ;
+       :hasLactoseContent 4.7 ;
+       :hasMilkYield 25.3 ;
+       :hasName "Daisy" ;
+       :hasWeight 600.5 ;
+       :hasHealthRecord :Record1 ;
+       :hasProteinContent 3.2 .
+
+
+###  http://www.example.org/ontology#Feed1
+:Feed1 rdf:type owl:NamedIndividual ,
+                :GrassFodder ;
+       :hasFeedName "Fresh Grass Fodder" ;
+       :hasFodderQuantity 1000.0 .
+
+
+###  http://www.example.org/ontology#Feed2
+:Feed2 rdf:type owl:NamedIndividual ,
+                :AlfalfaHay ;
+       :hasFeedName "Dried Alfalfa Hay" ;
+       :hasFodderQuantity 500.0 .
+
+
+###  http://www.example.org/ontology#Feed3
+:Feed3 rdf:type owl:NamedIndividual ,
+                :GreenLegumeFodder ;
+       :hasFeedName "Green Legume Fodder" ;
+       :hasFodderQuantity 700.0 .
+
+
+###  http://www.example.org/ontology#Feed4
+:Feed4 rdf:type owl:NamedIndividual ,
+                :HydroponicFodder ;
+       :hasFeedName "Hydroponic Fodder" ;
+       :hasFodderQuantity 300.0 .
+
+
+###  http://www.example.org/ontology#Luna
+:Luna rdf:type owl:NamedIndividual ,
+               :MurrahBuffalo ;
+      :hasCheckup :Checkup1 ;
+      :hasVaccination :Vaccine1 ;
+      :isConsumedBy :Feed4 ;
+      :hasAge 7 ;
+      :hasFatContent 7.5 ;
+      :hasLactoseContent 5.2 ;
+      :hasMilkYield 20.0 ;
+      :hasName "Luna" ;
+      :hasWeight 900.0 ;
+      :hasProteinContent 4.0 .
+
+
+###  http://www.example.org/ontology#Max
+:Max rdf:type owl:NamedIndividual ,
+              :AngusCow ;
+     :hasVaccination :Vaccine3 ;
+     :isConsumedBy :Feed3 ;
+     :hasAge 6 ;
+     :hasName "Max" ;
+     :hasWeight 800.0 .
+
+
+###  http://www.example.org/ontology#MilkingMachine1
+:MilkingMachine1 rdf:type owl:NamedIndividual ,
+                          :AutomatedPasteurizers ;
+                 :hasPart :RoboticMilkingArm1 ;
+                 :produces :StorageTank1 ;
+                 :hasCost 5000.0 ;
+                 :hasMachineName "Milking Machine 1" .
+
+
+###  http://www.example.org/ontology#MilkingMachine2
+:MilkingMachine2 rdf:type owl:NamedIndividual ,
+                          :AutomatedPasteurizers ;
+                 :hasCost 5500.0 ;
+                 :hasMachineName "Milking Machine 2" .
+
+
+###  http://www.example.org/ontology#MyDairyFarm
+:MyDairyFarm rdf:type owl:NamedIndividual ,
+                      :DairyFarm ;
+             :hasEquipment :MilkingMachine1 ,
+                           :MilkingMachine2 ,
+                           :StorageTank1 ,
+                           :StorageTank2 ;
+             :hasHealthManagement :Checkup1 ,
+                                  :Checkup2 ;
+             :hasLivestock :Bella ,
+                           :Charlie ,
+                           :Daisy ,
+                           :Luna ,
+                           :Max ,
+                           :Rocky ;
+             :hasQualityControl :QualityTest1 ,
+                                :QualityTest2 ;
+             :hasWasteManagement :Waste1 ,
+                                 :Waste2 ;
+             :usesFeedingSystem :Feed1 ,
+                                :Feed2 ,
+                                :Feed3 ,
+                                :Feed4 .
+
+
+###  http://www.example.org/ontology#QualityTest1
+:QualityTest1 rdf:type owl:NamedIndividual ,
+                       :BacterialTesting ;
+              :hasTestResult "Negative" .
+
+
+###  http://www.example.org/ontology#QualityTest2
+:QualityTest2 rdf:type owl:NamedIndividual ,
+                       :ChemicalTesting ;
+              :hasTestResult "Negative" .
+
+
+###  http://www.example.org/ontology#RoboticMilkingArm1
+:RoboticMilkingArm1 rdf:type owl:NamedIndividual ,
+                             :FarmEquipment ;
+                    :isPartOf :MilkingMachine1 ;
+                    :hasCost 10000.0 ;
+                    :hasMachineName "Robotic Milking Arm 1" .
+
+
+###  http://www.example.org/ontology#Rocky
+:Rocky rdf:type owl:NamedIndividual ,
+                :BoerGoat ;
+       :hasVaccination :Vaccine3 ;
+       :isConsumedBy :Feed2 ;
+       :hasAge 4 ;
+       :hasName "Rocky" ;
+       :hasWeight 60.0 .
+
+
+###  http://www.example.org/ontology#StorageTank1
+:StorageTank1 rdf:type owl:NamedIndividual ,
+                       :BulkMilkStorage ;
+              :hasQualityControl :QualityTest1 ;
+              :hasStorageTemperature 4.0 .
+
+
+###  http://www.example.org/ontology#StorageTank2
+:StorageTank2 rdf:type owl:NamedIndividual ,
+                       :BulkMilkStorage ;
+              :hasStorageTemperature 3.5 .
+
+
+###  http://www.example.org/ontology#Vaccine1
+:Vaccine1 rdf:type owl:NamedIndividual ,
+                   :FMDVaccine ;
+          :hasVaccinationDate "2023-10-01"^^xsd:date ;
+          :hasVaccineName "FMD Vaccine 2023" .
+
+
+###  http://www.example.org/ontology#Vaccine2
+:Vaccine2 rdf:type owl:NamedIndividual ,
+                   :BrucellosisVaccine ;
+          :hasVaccinationDate "2023-09-15"^^xsd:date ;
+          :hasVaccineName "Brucellosis Vaccine 2023" .
+
+
+###  http://www.example.org/ontology#Vaccine3
+:Vaccine3 rdf:type owl:NamedIndividual ,
+                   :AnthraxVaccine ;
+          :hasVaccinationDate "2023-08-20"^^xsd:date ;
+          :hasVaccineName "Anthrax Vaccine 2023" .
+
+
+###  http://www.example.org/ontology#VitaminASupplement1
+:VitaminASupplement1 rdf:type owl:NamedIndividual ,
+                              :VitaminA ;
+                     :hasSupplementDose 10.0 .
+
+
+###  http://www.example.org/ontology#Waste1
+:Waste1 rdf:type owl:NamedIndividual ,
+                 :SolidManureStorage ;
+        :hasWasteVolume 1000.0 .
+
+
+###  http://www.example.org/ontology#Waste2
+:Waste2 rdf:type owl:NamedIndividual ,
+                 :CompostingManure ;
+        :hasWasteVolume 500.0 .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
