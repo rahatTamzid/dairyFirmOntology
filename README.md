@@ -12,9 +12,6 @@ The **Dairy Farm Ontology (DFO)** models dairy farming operations, including liv
 
 ---
 
-## Ontology Overview
-![Class Hierarchy Diagram](assets/class_diagram.png)  
-*(Generated using [Protégé OntoGraf](https://protege.stanford.edu/))*  
 
 ### Core Classes
 - **DairyFarm**: Central class linking all components.
